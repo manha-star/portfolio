@@ -1,0 +1,258 @@
+
+/* Base dark blue + subtle dot grid */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  background-color: #031452; /* base */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1.2px);
+  background-size: 22px 22px; /* spacing of the dots */
+
+  
+  transition: background-color 300ms ease, background-image 300ms ease;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 1.2px);
+
+}
+
+
+/* When specific cards are hovered, change the entire page background */
+body:has(#low-tide-high-ride:hover),
+body:has(#low-tide-high-ride:focus-within) {
+  background-color: #e45a76; /* deep plum */
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.12) 1px, transparent 1.2px);
+}
+
+
+/* Another card → page background (example) */
+body:has(#sumn-else:hover),
+body:has(#sumn-else:focus-within) {
+  background-color: #083b2e; /* deep teal */
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.10) 1px, transparent 1.2px);
+}
+
+
+
+/* Hero Header */
+/* Put the hero in the center of the viewport */
+.hero {
+  min-height: 70vh;           /* or 100vh if you want full height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* horizontal center for the column layout */
+  justify-content: center;     /* vertical center */
+  max-width: 980px;
+  padding: 40px 24px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Keep the rest from Option A */
+.name-area { display: flex; align-items: center; gap: 20px; justify-content: center; }
+.name-area h1 { letter-spacing: 8px; font-weight: 300; font-size: clamp(32px, 4vw, 48px); margin: 0; }
+.right-tag { font-size: 14px; opacity: 0.7; }
+.subtitle { margin-top: 8px; font-style: italic; opacity: 0.85; letter-spacing: 1px; }
+.bio { max-width: 560px; margin: 18px auto 0; line-height: 1.6; opacity: 0.9; }
+
+/* Projects Section */
+.projects {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 80px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #162b81;
+    padding: 25px;
+    width: 350px;
+    border-radius: 20px;
+}
+
+
+/* Low Tide High Ride — unique card hover color */
+#low-tide-high-ride:hover,
+#low-tide-high-ride:focus-within {
+  background: #e11a6d; /* pick a color that complements the page plum */
+}
+
+
+
+.card:hover {
+  background: #2b4ccd;                /* new background colour */
+  transform: scale(1.03);             /* slight pop-out */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35); /* optional depth */
+}
+
+
+.card h3 {
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.category {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin: 10px 0 15px 0;
+}
+
+.tags span {
+    /* background: rgba(255,255,255,0.1);
+    padding: 5px 10px;
+    border-radius: 30px;
+    font-size: 12px;
+    margin-right: 6px; */
+
+    --c: #6ec1ff;
+
+  /* background is a translucent tint of the same color */
+  /* using rgba() so it works everywhere */
+  background: rgba(110, 193, 255, 0.18); /* will be overridden below via var() */
+
+  color: var(--c);
+  border: 1px solid var(--c);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+  margin: 4px 6px 0 0;
+  line-height: 1;
+  white-space: nowrap;
+
+}
+
+
+
+.tag[maya-tag] {
+  --c: #00c4b3;   /* Maya teal */
+}
+
+.tag[premirepro-tag] {
+  --c: #9b6bff;   /* Premiere Pro purple */
+}
+
+.tag[photoshop-tag] {
+  --c: #31a8ff;   /* Photoshop blue */
+}
+
+.tag[aftereffects-tag] {
+  --c: #b583ff;   /* After Effects lavender */
+}
+
+/* Ensure the overlay can sit on top and respect the rounded corners */
+.card {
+  position: relative;
+  overflow: hidden; /* keeps overlay clipped to the card’s rounded corners */
+}
+
+/* Full-card overlay link (Option 2) */
+.card-overlay-link {
+  position: absolute;
+  inset: 0;                /* top:0; right:0; bottom:0; left:0 */
+  z-index: 5;
+  border-radius: inherit;  /* match the card’s 20px rounding */
+  text-indent: -9999px;    /* hide text visually but keep it accessible */
+  /* Avoid default link underline + color bleeding */
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Make the overlay focusable outline visible on dark background */
+.card-overlay-link:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.7);
+  outline-offset: 4px; /* sits inside because of overflow:hidden */
+}
+
+/* Pointer shows it’s clickable when hovering the card area */
+.card:hover,
+.card:has(.card-overlay-link:hover) {
+  cursor: pointer;
+}
+
+/* Optional: subtle lift on hover/focus, reusing your vibe */
+.card {
+  transition: transform 120ms ease, box-shadow 180ms ease;
+}
+
+.card:hover,
+.card:focus-within {
+  transform: scale(1.03); /* you already had this; keeps behavior consistent */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Preserve your special per-card hover colors (these already work). 
+   The overlay is a link, so :focus-within will be triggered by keyboard focus. */
+#low-tide-high-ride:hover,
+#low-tide-high-ride:focus-within {
+  background: #e11a6d;
+}
+
+/* If you want the overlay not to block inner interactive elements (e.g., tags), 
+   you can selectively disable pointer events on those elements: */
+.card .tags,
+.card .tags * {
+  position: relative;
+  z-index: 6;            /* above the overlay so they stay clickable */
+  /* Optional: keep normal cursor on the tags */
+  cursor: default;
+}
+
+
+.card img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.desc {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.9;
+}
+
+/* Reuse same sizing and rounded corners as the image had */
+.card .card-media {
+    width: 100%;
+    height: 220px;           /* same visual height as before */
+    border-radius: 12px;
+    margin: 15px 0;
+    display: block;
+    object-fit: cover;       /* crop to fill without distortion */
+    background: #000;        /* graceful background while loading */
+
+    pointer-events: none; /* prevents click/hover UI from appearing */
+
+}
+
+/* Optional: remove default focus outline color and make it visible on dark bg */
+.card .card-media:focus {
+    outline: 2px solid rgba(255,255,255,0.6);
+    outline-offset: 2px;
+}
+
+/* Responsive (optional): keep a fixed aspect ratio instead of fixed height) */
+@media (max-width: 520px) {
+    .card .card-media {
+        height: auto;
+        aspect-ratio: 16 / 9;   /* keep it neat on small screens */
+    }
+
+    .name-area { gap: 12px; }
+  .right-tag { font-size: 12px; }
+  .bio { max-width: 90ch; }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  body, .card { transition: none; }
+}
+
+

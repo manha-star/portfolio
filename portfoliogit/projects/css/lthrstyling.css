@@ -1,0 +1,462 @@
+/* ---------- Base ---------- */
+:root{
+  --bg-1: #ff7e5f;   /* warm orange */
+  --bg-2: #b84ddb;   /* pink-magenta */
+  --ink: #ffffff;
+  --ink-dim: #e9e9f2;
+  --ink-soft: #ffffffb3;
+  --panel: rgba(255,255,255,0.06);
+  --line: rgba(255,255,255,0.18);
+  --shadow: 0 8px 28px rgba(0,0,0,0.25);
+  --radius: 18px;
+
+    --section-menu-h: 56px;
+
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.65;
+  letter-spacing: 0.1px;
+    padding-top: var(--section-menu-h);
+  /* Background gradient */
+  background:
+    linear-gradient(180deg, var(--bg-1) 0%, #ff6f7a 30%, #d85cae 60%, var(--bg-2) 100%);
+  background-attachment: fixed;
+}
+
+/* Content width */
+.container{
+
+ width: min(100%, 1100px); /* more width → smaller margins */
+  padding-inline: 16px;     /* optional: reduce padding */
+  margin-inline: auto
+
+
+}
+
+/* Fixed top menu bar */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 24px;
+  z-index: 2000;
+}
+
+.top-nav .home-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.top-nav .home-link:hover {
+  text-decoration: underline;
+}
+
+
+
+/* ---------- Hero ---------- */
+.hero{
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 50vw, 600px);
+  overflow: hidden;
+}
+.hero-img{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  filter: saturate(1.05) contrast(1.02);
+}
+.hero-overlay{
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35)),
+    linear-gradient(0deg, rgba(0,0,0,0.15), transparent 40%);
+}
+.hero-title{
+  position: relative;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding-left: 0;
+}
+.hero h1{
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-weight: 300;
+  font-size: clamp(28px, 5.2vw, 56px);
+  letter-spacing: 0.35em;         /* wide tracking like the mock */
+  text-transform: uppercase;
+  color: var(--ink);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+
+/* ---------- Intro ---------- */
+.intro{
+  
+    
+  padding: 28px 22px 18px;
+
+
+}
+
+
+
+/* improve paragraph width/readability when section is wide */
+.intro .lead {
+  max-width: 65ch;
+ 
+
+
+}
+.lead{
+
+  font-style: italic;
+
+  margin: 0 auto;
+  width: min(760px, 100%);
+  color: var(--ink-soft);
+  font-size: clamp(14px, 1.1rem, 18px);
+}
+
+/* ---------- Sections ---------- */
+.section{
+  padding: clamp(28px, 5vw, 48px) 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Heading style with spaced letters */
+.kicker{
+  margin: 0 0 18px 0;
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-weight: 400;
+  text-transform: lowercase;
+  letter-spacing: 0.35em;
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: var(--ink-dim);
+}
+
+
+
+/* Two-column split */
+.split{
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(18px, 3.5vw, 32px);
+  align-items: start;
+}
+@media (max-width: 840px){
+  .split{ grid-template-columns: 1fr; }
+}
+
+/* Paragraphs */
+.section p{ color: var(--ink-soft); margin: 0 0 14px; }
+.small{ font-size: 0.95em; opacity: 0.9; }
+
+/* Figure / images */
+.figure{
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.process-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  background: linear-gradient(180deg, #e87575 0%, #cc4f4f 100%);
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+/* Top title */
+.section-title {
+  text-transform: lowercase;
+  letter-spacing: 12px;
+  font-weight: 300;
+  margin-bottom: 60px;
+}
+
+/* Two-column structure */
+.process-block {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 40px;
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.process-block:last-of-type {
+  border-bottom: none;
+}
+
+/* Left labels */
+.label {
+  font-weight: 500;
+  opacity: 0.9;
+  line-height: 1.4;
+
+
+ padding-right: 20px; /* space before the line */
+  border-right: 1px solid rgba(255,255,255,0.4);
+
+}
+
+/* Right content */
+.content p {
+  line-height: 1.6;
+  opacity: 0.95;
+  margin-bottom: 24px;
+}
+
+/* Image rows */
+.image-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.image-row figure {
+  width: 180px;
+}
+
+.image-row img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+figure {
+  margin: 0;
+}
+
+figcaption {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* Section frame inherits your page background */
+.description {
+  /* no background here on purpose */
+  padding: clamp(32px, 6vw, 72px) 0;
+}
+
+
+
+/* Two columns: text (wider) + image (narrower) */
+.desc-content {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;  /* tweak ratio to taste */
+  gap: clamp(20px, 4vw, 64px);
+  align-items: center;
+}
+
+/* Text styling */
+.text-col p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: clamp(14px, 1.1vw, 18px);
+  color: var(--ink, #fff);
+  opacity: 0.95;
+}
+
+/* Image on the right */
+.img-col img {
+  width: 100%;
+  height: auto;           /* keeps natural aspect ratio */
+  border-radius: 10px;    /* matches your visual */
+  object-fit: cover;
+  display: block;
+}
+
+/* Section wrapper (inherits your page background) */
+.texturing {
+  padding: clamp(28px, 6vw, 72px) 0;
+}
+
+/* Two-column layout: text (wider) | video (narrower) */
+.texturing-content {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr; /* adjust ratio to taste */
+  gap: clamp(16px, 4vw, 48px);
+  align-items: start; /* top-align the two columns */
+}
+
+/* Text column */
+.texturing .text-col p {
+  margin: 0;
+  line-height: 1.7;
+  font-size: clamp(14px, 1.1vw, 18px);
+  color: var(--ink, #fff);
+  opacity: 0.95;
+}
+
+/* Video on the right */
+.media-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Maintain aspect ratio and rounded corners */
+.side-video {
+  
+  width: 100%;
+  height: auto;        /* derive height from the video’s aspect */
+  border-radius: 12px;
+  display: block;
+  background: #000;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+
+}
+
+/* Optional: if you use an image fallback instead/alongside video */
+.side-image {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.preimg {
+  
+ display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px
+
+}
+
+/* Scale images down */
+.preimg img {
+  
+ width: 100%;
+  height: auto;
+  border-radius: 8px;
+
+}
+
+/* Smooth anchor scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Layout: sidebar + content under the hero --- */
+.page-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr; /* sidebar | content */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left sidebar that sticks while scrolling */
+.left-sidebar {
+  position: sticky;
+  top: 24px;              /* how far from top of viewport when stuck */
+  align-self: start;      /* ensure sticky behaves in grid */
+  z-index: 10;
+
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* Vertical list */
+.left-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.left-sidebar a {
+  display: block;
+  padding: 8px 10px;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.left-sidebar a:hover,
+.left-sidebar a:focus {
+  background: rgba(255,255,255,0.08);
+  outline: none;
+}
+
+
+
+
+/* Main content column */
+.main-content {
+  min-width: 0; /* prevents overflow in grid */
+}
+
+/* Anchor offset so sticky sidebar doesn’t hide headings if you add a sticky top bar later */
+.section { scroll-margin-top: 24px; }
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 1fr; /* single column */
+  }
+  .left-sidebar {
+    position: sticky;
+    top: 0;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 8px 10px;
+  }
+  .left-sidebar ul {
+    flex-direction: row;  /* turn into a top bar on mobile */
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+}
+
+
+
+
+/* Make it stack nicely on smaller screens */
+@media (max-width: 900px) {
+  .texturing-content {
+    grid-template-columns: 1fr;
+  }
+  .media-col {
+    order: 2; /* text first, then video */
+  }
+
+  .desc-content {
+    grid-template-columns: 1fr;
+  }
+  .img-col {
+    order: 2;             /* text first, then image */
+  }
+  .img-col img {
+    margin-top: 16px;
+  }
+}
+
+/* Responsive: stack or show 2‑across on small screens */
+@media (max-width: 700px) {
+  .preimg img { width: 48%; max-width: none; } /* 2 per row */
+}
+@media (max-width: 420px) {
+  .preimg img { width: 100%; }                 /* 1 per row */
+}
+
+
+
